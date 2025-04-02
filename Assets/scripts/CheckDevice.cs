@@ -31,28 +31,6 @@ public class CheckDevice : MonoBehaviour
             {
                 canvas.renderMode = RenderMode.WorldSpace;
                 canvas.worldCamera = Camera.main;
-                //if (canvas.CompareTag("leftArmCanvas"))
-                //{
-                    
-                //    GameObject left = FindFirstObjectByType<XRTransformStabilizer>().gameObject;
-                //    if (left.name == "Left Controller Stabilized")
-                //    {
-                //        canvas.transform.SetParent(left.transform);
-                //    }
-                //}
-                //else
-                //{
-                //    GameObject right = FindAnyObjectByType<XRTransformStabilizer>().gameObject;
-                //    if (right.name == "Right Controller Stabilized")
-                //    {
-                //        canvas.transform.SetParent(right.transform);
-                //    }
-                //    else
-                //    {
-                //        Debug.Log("ddint find right control");
-                //    }
-                //}
-                
                 Debug.Log("VR");
             }
         }
@@ -67,8 +45,8 @@ public class CheckDevice : MonoBehaviour
                 mobilePlay.SetActive(true);
                 Camera.transform.SetParent(mobilePlay.transform);
                 canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+                canvas.GetComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;
 
-                canvas.GetComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
                 int child = canvas.transform.childCount;
                 if (canvas.CompareTag("leftArmCanvas"))
                 {
@@ -77,22 +55,15 @@ public class CheckDevice : MonoBehaviour
                         RectTransform rt = canvas.transform.GetChild(i).GetComponent<RectTransform>();
                         if (canvas.transform.GetChild(i).CompareTag("Button"))
                         {
-                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50);
-                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
-                            rt.localPosition = new Vector3(-720, -100 - (i * 50), 0);
+                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 75);
+                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 75);
+                            rt.localPosition = new Vector2(0,0);
                         }
-                        else if (canvas.transform.GetChild(i).CompareTag("Panel"))
-                        {
-                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 1);
-                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 1);
-                            rt.anchoredPosition = rt.anchoredPosition;
-
-                        }                        
                         else
                         {
                             rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 200);
                             rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
-                            rt.localPosition = new Vector3(100, -25, 0);
+                            rt.localPosition = new Vector2(60, 0);
                         }
                     }
                 }
@@ -110,13 +81,14 @@ public class CheckDevice : MonoBehaviour
                             {
                                 GridLayoutGroup grid = rt.gameObject.GetComponent<GridLayoutGroup>();
                                 grid.cellSize = new Vector2(250, 100);
+                                grid.childAlignment = TextAnchor.MiddleCenter;
                             }
                         }
                         else
                         {
-                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50);
-                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
-                            rt.localPosition = new Vector3(-25, i * -25, 0);
+                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 75);
+                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 75);
+                            rt.localPosition = new Vector2(0, 0);
                         }
                     }
                 }
