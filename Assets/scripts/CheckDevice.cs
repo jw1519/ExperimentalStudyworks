@@ -23,34 +23,35 @@ public class CheckDevice : MonoBehaviour
     }
     public void CheckForDevice()
     {
+        var xrLoader = XRGeneralSettings.Instance.Manager.activeLoader;
         //checks if vr headset is connected
-        if (!XRGeneralSettings.Instance.Manager.activeLoader != null) // change back wehen test Mobile
+        if (xrLoader != null) 
         {
             foreach (Canvas canvas in canvasList)
             {
                 canvas.renderMode = RenderMode.WorldSpace;
                 canvas.worldCamera = Camera.main;
-                if (canvas.CompareTag("leftArmCanvas"))
-                {
+                //if (canvas.CompareTag("leftArmCanvas"))
+                //{
                     
-                    GameObject left = FindFirstObjectByType<XRTransformStabilizer>().gameObject;
-                    if (left.name == "Left Controller Stabilized")
-                    {
-                        canvas.transform.SetParent(left.transform);
-                    }
-                }
-                else
-                {
-                    GameObject right = FindAnyObjectByType<XRTransformStabilizer>().gameObject;
-                    if (right.name == "Right Controller Stabilized")
-                    {
-                        canvas.transform.SetParent(right.transform);
-                    }
-                    else
-                    {
-                        Debug.Log("ddint find right control");
-                    }
-                }
+                //    GameObject left = FindFirstObjectByType<XRTransformStabilizer>().gameObject;
+                //    if (left.name == "Left Controller Stabilized")
+                //    {
+                //        canvas.transform.SetParent(left.transform);
+                //    }
+                //}
+                //else
+                //{
+                //    GameObject right = FindAnyObjectByType<XRTransformStabilizer>().gameObject;
+                //    if (right.name == "Right Controller Stabilized")
+                //    {
+                //        canvas.transform.SetParent(right.transform);
+                //    }
+                //    else
+                //    {
+                //        Debug.Log("ddint find right control");
+                //    }
+                //}
                 
                 Debug.Log("VR");
             }

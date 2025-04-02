@@ -12,7 +12,6 @@ public class UIButtons : MonoBehaviour
     bool pausePanelOpen = false;
 
     public Slider healthbar;
-    public Slider defencebar;
     public int health = 10;
 
     private void Awake()
