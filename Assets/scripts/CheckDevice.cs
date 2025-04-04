@@ -55,15 +55,15 @@ public class CheckDevice : MonoBehaviour
                         RectTransform rt = canvas.transform.GetChild(i).GetComponent<RectTransform>();
                         if (canvas.transform.GetChild(i).CompareTag("Button"))
                         {
-                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 75);
-                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 75);
-                            rt.localPosition = new Vector2(0,0);
+                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 100);
+                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100);
+                            rt.localPosition = new Vector2(0,30);
                         }
                         else
                         {
-                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 200);
-                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
-                            rt.localPosition = new Vector2(60, 0);
+                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 400);
+                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100);
+                            rt.localPosition = new Vector2(160, -10);
                         }
                     }
                 }
@@ -80,15 +80,15 @@ public class CheckDevice : MonoBehaviour
                             if (rt.gameObject.GetComponent<GridLayoutGroup>())
                             {
                                 GridLayoutGroup grid = rt.gameObject.GetComponent<GridLayoutGroup>();
-                                grid.cellSize = new Vector2(250, 100);
+                                grid.cellSize = new Vector2(300, 100);
                                 grid.childAlignment = TextAnchor.MiddleCenter;
                             }
                         }
                         else
                         {
-                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 75);
-                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 75);
-                            rt.localPosition = new Vector2(0, 0);
+                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 100);
+                            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100);
+                            rt.localPosition = new Vector2(0, -10);
                         }
                     }
                 }
